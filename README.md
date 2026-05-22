@@ -11,6 +11,23 @@ This repository is designed as a **professional portfolio and interview preparat
 
 ---
 
+## 🚀 Quick Start & Local Run
+
+To launch the interactive **SAP ECC Explorer and Training Portal** web application locally, execute the following commands in your terminal:
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start Server:**
+   ```bash
+   npm start
+   ```
+3. **Open Portal:**
+   Navigate to [http://localhost:5000](http://localhost:5000) in your web browser.
+
+---
+
 ## 🏛️ System Architecture
 
 SAP ECC relies on the classic **3-Tier R/3 architecture** built on the NetWeaver integration suite. Below is a conceptual visualization of the system infrastructure:

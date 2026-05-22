@@ -1,0 +1,75 @@
+{
+  "tcodes": [
+    { "code": "MM01", "name": "Create Material", "module": "MM", "description": "Used to create a new material record centrally in the system, setting up initial descriptions and unit of measure." },
+    { "code": "ME21N", "name": "Create Purchase Order", "module": "MM", "description": "Used to raise an external purchasing contract with a vendor for items or services." },
+    { "code": "MIGO", "name": "Goods Movements", "module": "MM", "description": "Unified transaction for posting Goods Receipts, Goods Issues, and stock transfers." },
+    { "code": "MIRO", "name": "Enter Inbound Invoice", "module": "MM", "description": "Used to log vendor invoices and execute the three-way match (PO vs GR vs Invoice)." },
+    { "code": "VA01", "name": "Create Sales Order", "module": "SD", "description": "Used to enter a customer order in the system, triggering stock Availability Checks (ATP)." },
+    { "code": "VL01N", "name": "Create Outbound Delivery", "module": "SD", "description": "Prepares sales order items for picking and packing in the shipping point." },
+    { "code": "VF01", "name": "Create Billing Document", "module": "SD", "description": "Generates a customer invoice for deliveries or services, creating Accounts Receivable posts." },
+    { "code": "FB50", "name": "G/L Account Posting", "module": "FI", "description": "Used to record manual debit/credit journal entries directly to General Ledger accounts." },
+    { "code": "FS00", "name": "G/L Account Centrally", "module": "FI", "description": "Allows creation and management of Chart of Accounts and Company Code G/L parameters." },
+    { "code": "CO01", "name": "Create Production Order", "module": "PP", "description": "Creates a production order to manufacture a specific finished material based on BOM and routing." },
+    { "code": "MD04", "name": "Stock/Requirements List", "module": "PP", "description": "Real-time list displaying current stock, outstanding sales orders, purchase orders, and planned orders." },
+    { "code": "LT03", "name": "Create TO for Delivery", "module": "WM", "description": "Generates a Transfer Order to pick stock from specific warehouse bins for a shipping delivery." },
+    { "code": "LT12", "name": "Confirm Transfer Order", "module": "WM", "description": "Confirms that physical stock movement between bins has been successfully executed." },
+    { "code": "PA40", "name": "HR Personnel Actions", "module": "HCM", "description": "Wizard transaction to execute hire, transfer, promotion, or termination lifecycles." },
+    { "code": "SU01", "name": "User Maintenance", "module": "Basis", "description": "Admin screen to create users, reset passwords, lock/unlock profiles, and assign roles." },
+    { "code": "PFCG", "name": "Role Maintenance", "module": "Basis", "description": "The profile generator used to create security roles and authorization objects." },
+    { "code": "ST22", "name": "ABAP Short Dumps", "module": "Basis", "description": "Lists system execution crashes and reports the exact source lines of program failures." },
+    { "code": "SM12", "name": "Select Lock Entries", "module": "Basis", "description": "Displays and allows administrators to delete active table Enqueue locks causing database locks." }
+  ],
+  "tables": [
+    { "name": "MARA", "module": "MM", "description": "General Material Data", "fields": ["MATNR (Material No)", "MTART (Material Type)", "MEINS (Base Unit)", "ERNAM (Created By)"] },
+    { "name": "MARC", "module": "MM", "description": "Plant Data for Material", "fields": ["MATNR (Material No)", "WERKS (Plant)", "DISMM (MRP Type)", "MINBE (Reorder Point)"] },
+    { "name": "MARD", "module": "MM", "description": "Storage Location Data for Material", "fields": ["MATNR (Material No)", "WERKS (Plant)", "LGORT (Storage Location)", "LABST (Valuated Stock)"] },
+    { "name": "LFA1", "module": "MM", "description": "Vendor Master (General Section)", "fields": ["LIFNR (Vendor ID)", "NAME1 (Name)", "LAND1 (Country)", "ORT01 (City)"] },
+    { "name": "KNA1", "module": "SD", "description": "Customer Master (General Section)", "fields": ["KUNNR (Customer ID)", "NAME1 (Name)", "LAND1 (Country)", "ORT01 (City)"] },
+    { "name": "VBAK", "module": "SD", "description": "Sales Document Header Data", "fields": ["VBELN (Sales Order ID)", "ERDAT (Created Date)", "NETWR (Net Value)", "KUNNR (Sold-To Party)"] },
+    { "name": "VBAP", "module": "SD", "description": "Sales Document Item Data", "fields": ["VBELN (Sales Order ID)", "POSNR (Item Number)", "MATNR (Material No)", "KWMENG (Order Quantity)"] },
+    { "name": "BKPF", "module": "FI", "description": "Accounting Document Header", "fields": ["BELNR (Document No)", "BUKRS (Company Code)", "GJAHR (Fiscal Year)", "BLDAT (Document Date)"] },
+    { "name": "BSEG", "module": "FI", "description": "Accounting Document Segment (Item)", "fields": ["BELNR (Document No)", "BUKRS (Company Code)", "BUZEI (Line Item)", "SHKZG (Debit/Credit)", "DMBTR (Amount)"] },
+    { "name": "MAST", "module": "PP", "description": "Material to BOM Link", "fields": ["MATNR (Material No)", "WERKS (Plant)", "STLNRP (BOM Number)"] },
+    { "name": "AUFK", "module": "PP", "description": "Production Order Header Data", "fields": ["AUFNR (Order Number)", "AUTYP (Order Type)", "WERKS (Plant)", "KTEXT (Description)"] },
+    { "name": "LQUA", "module": "WM", "description": "Quants (Bin stock breakdown)", "fields": ["LGNUM (Warehouse)", "LGTYP (Storage Type)", "LGPLA (Storage Bin)", "MATNR (Material No)", "GESME (Total Stock)"] }
+  ],
+  "dumps": {
+    "TIME_OUT": {
+      "title": "TIME_OUT (Process Run Time Limit Exceeded)",
+      "cause": "A dialog work process executed an ABAP query that exceeded the maximum runtime threshold (usually 600 seconds) defined by parameter 'rdisp/max_wprun_time'.",
+      "steps": [
+        "Check ST22 dump log to find the exact database SQL select statement that hung.",
+        "Add indexes to database tables being queried if search fields are non-indexed.",
+        "Optimize the ABAP code to select only required fields instead of using 'SELECT *'.",
+        "If the process is a long-running reporting tool, schedule it to run as a Background Batch Job (SM36) rather than a Dialog Process."
+      ]
+    },
+    "ITAB_DUPLICATE_KEY": {
+      "title": "ITAB_DUPLICATE_KEY (Duplicate Key Insertion in Sorted/Unique Table)",
+      "cause": "The program attempted to insert a line item into an internal table defined with a UNIQUE KEY, but a record with that key already existed.",
+      "steps": [
+        "Review the dump statement in ST22 to see the key values of the record being inserted.",
+        "Ensure data inputs or database SELECT statements do not retrieve duplicate primary keys.",
+        "Modify the ABAP program to use 'INSERT ... ASSIGNING ...' or check existence using 'READ TABLE ... TRANSPORTING NO FIELDS' before inserting."
+      ]
+    },
+    "GETWA_NOT_ASSIGNED": {
+      "title": "GETWA_NOT_ASSIGNED (Field Symbol Reference Unassigned)",
+      "cause": "The ABAP code attempted to read or modify a Field Symbol (pointer) that has not been initialized or assigned to a valid memory area.",
+      "steps": [
+        "Identify the unassigned field symbol name in the ST22 source code dump extract.",
+        "Check if a database read failed (e.g. subrc != 0) before the field symbol assignment was checked.",
+        "Add defensive programming: always check 'IF <fs_symbol> IS ASSIGNED' before accessing the fields."
+      ]
+    },
+    "SQL_ARRAY_INSERT_DUPREC": {
+      "title": "SQL_ARRAY_INSERT_DUPREC (Duplicate Primary Key in Database)",
+      "cause": "The program tried to insert a record into a database table using an SQL INSERT statement, but a row with the exact same primary key values already exists in that database table.",
+      "steps": [
+        "Identify the target database table from ST22 (e.g., BKPF or LQUA).",
+        "Check the Number Range interval for the document type (T-Code: SNRO). The number range status is likely out of sync with the highest document ID in the database.",
+        "Readjust the next number range status upwards to ensure it generates unique document IDs."
+      ]
+    }
+  }
+}
