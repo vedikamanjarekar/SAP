@@ -641,3 +641,57 @@ td code {
   font-size: 0.85rem;
   font-weight: 600;
 }
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--panel-border);
+    padding: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .sidebar-logo {
+    margin-bottom: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .sidebar-footer {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 1.5rem 1rem;
+    height: auto;
+    overflow-y: visible;
+  }
+  
+  .header-title h1 {
+    font-size: 1.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

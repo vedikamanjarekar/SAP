@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -81,6 +82,13 @@ app.post('/api/diagnose', (req, res) => {
       message: `Error code '${errorCode}' not found in basis database. Try 'TIME_OUT', 'ITAB_DUPLICATE_KEY', 'GETWA_NOT_ASSIGNED', or 'SQL_ARRAY_INSERT_DUPREC'.`
     });
   }
+});
+
+// Serve dynamic config for frontend
+app.get('/config.js', (req, res) => {
+  const apiUrl = process.env.FRONTEND_API_URL || process.env.API_URL || `http://localhost:${PORT}`;
+  res.type('application/javascript');
+  res.send(`window.ENV = { API_URL: "${apiUrl}" };`);
 });
 
 // Serve frontend SPA index for any unrecognized routes

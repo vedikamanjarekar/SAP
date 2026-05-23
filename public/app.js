@@ -1,4 +1,12 @@
-const API_BASE = window.location.origin;
+const getApiBase = () => {
+  if (window.ENV && window.ENV.API_URL) return window.ENV.API_URL;
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    // If frontend is running on a different port locally, connect to backend on 5000
+    if (window.location.port !== '5000') return 'http://localhost:5000';
+  }
+  return window.location.origin;
+};
+const API_BASE = getApiBase();
 
 // Tab Navigation Logic
 const navButtons = document.querySelectorAll('.nav-btn');
