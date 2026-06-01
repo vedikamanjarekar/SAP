@@ -1,0 +1,86 @@
+# SAP PP: Production Planning Module
+
+This document provides a comprehensive breakdown of the **SAP PP (Production Planning)** module, which manages the manufacturing activities of an enterprise in SAP ECC.
+
+---
+
+### Module Overview
+SAP PP aligns manufacturing capacities and raw material availability with customer demand and sales forecasts. The module supports diverse manufacturing environments, including Discrete Manufacturing (assembly-based), Process Manufacturing (recipe-based like chemicals/food), and Repetitive Manufacturing (continuous production lines).
+
+---
+
+### Key Functions
+* **Material Requirements Planning (MRP):** Runs algorithms to calculate net requirements, scheduling planned orders for manufacture or purchase requisitions for procurement.
+* **Shop Floor Control (PP-SFC):** Executes production orders, confirming operations, issuing raw materials, and receiving finished goods.
+* **Capacity Planning (PP-CRP):** Evaluates whether the machine and labor capacities of work centers can meet the scheduled production load.
+* **Bill of Materials (PP-BD-BOM):** Structures the hierarchical list of raw materials and ingredients required to manufacture a parent product.
+
+---
+
+### Important Master Data
+* **Bill of Materials (BOM - T-Codes `CS01`/`CS02`):** Lists components and quantities required for production (e.g., 4 wheels and 1 chassis to make 1 car).
+* **Routing (T-Codes `CA01`/`CA02`):** Defines the list of operations, sequences, and standard times required to manufacture a product (e.g., Step 10: Cut steel, Step 20: Weld parts).
+* **Work Center (T-Codes `CR01`/`CR02`):** Represents the physical machine or labor group where operations are executed. Contains capacity details and formula rates.
+* **Production Resource/Tool (PRT):** Represents movable operational equipment used in production (e.g., specific drill bits, testing software).
+
+---
+
+### Common Transactions (T-Codes) & Tables
+
+#### Core Transaction Codes
+| T-Code | Description | Purpose |
+| :--- | :--- | :--- |
+| **CO01 / CO02 / CO03** | Production Order | Create / Change / Display Production Orders |
+| **MD01 / MD02** | Run MRP | Trigger Material Requirements Planning runs |
+| **MD04** | Stock/Requirements List | Real-time dynamic stock and requirement evaluation |
+| **CS01 / CS02 / CS03** | Bill of Materials | Create / Change / Display BOMs |
+| **CA01 / CA02 / CA03** | Routing | Create / Change / Display Routings |
+| **CR01 / CR02 / CR03** | Work Center | Create / Change / Display Work Centers |
+| **CO11N / CO15** | Order Confirmation | Confirm machine hours, labor, and quantities finished |
+
+#### Key Database Tables
+| Table | Description | Type |
+| :--- | :--- | :--- |
+| **MAST** | Material to BOM Link | Master |
+| **STKO** | BOM Header Details | Master |
+| **STPO** | BOM Component Details | Master |
+| **PLKO** | Routing Header | Master |
+| **PLPO** | Routing Operations | Master |
+| **CRHD** | Work Center Header Details | Master |
+| **AUFK** | Order Headers (Production/Internal) | Transaction |
+| **AFKO** | Order Header Data PP | Transaction |
+| **AFPO** | Order Item Data (Finished outputs) | Transaction |
+
+---
+
+### Business Processes
+The core business cycle in PP is the **Plan-to-Produce (P2P)** flow:
+1. **Sales Operations Planning (SOP):** Establishes future production volumes based on sales forecasts.
+2. **MRP Run (`MD01`):** Analyzes demand and creates Planned Orders for finished goods.
+3. **Conversion (`CO40`):** Planned Orders are converted into active Production Orders.
+4. **Execution:** Production Orders are released. Components are issued to the shop floor (`MIGO` - movement type `261`).
+5. **Confirmation (`CO11N`):** Labor hours and machine times are posted against operations.
+6. **Goods Receipt (`MIGO` - movement type `101`):** Finished goods are received into stock, updating inventory.
+7. **Settlement (`KO88`):** Costs incurred are settled in CO, posting variances to financial accounts.
+
+---
+
+### Integration with Other Modules
+* **MM (Materials Management):** Releasing production orders checks raw material availability. Goods issue (`MIGO` 261) consumes MM inventory.
+* **CO (Controlling):** Work centers link to Cost Centers. Operations confirm Activity Types, charging labor/overhead to the Production Order. Settlement calculates variances.
+* **SD (Sales and Distribution):** Sales orders create demand triggers in MRP, and finished goods receipts fulfill SD deliveries.
+
+---
+
+### Real Industry Examples
+* **Scenario:** A bicycle assembly line uses a BOM listing 2 wheels, 1 frame, and 1 handlebar. A sales order for 50 bicycles is entered. MRP (`MD02`) runs, sees zero stock, and schedules a Production Order. Components are issued (`261`). Assemblers record hours in `CO11N`. Upon completion, a Goods Receipt (`101`) places the 50 bicycles in finished stock.
+
+---
+
+### Interview Questions
+
+#### Q1: What is the difference between a planned order and a production order?
+**Answer:** A Planned Order is a temporary document generated by the MRP algorithm to balance supply and demand. It has no authority for execution. A Production Order is a firm manufacturing request that commits resources, authorises component consumption, capacity booking, and cost tracking on the shop floor.
+
+#### Q2: What is the purpose of the Stock/Requirements List (MD04)?
+**Answer:** `MD04` is a real-time, dynamic monitor showing the current inventory, scheduled demand (Sales Orders, safety stock requirements), and scheduled supply (Purchase Orders, Production Orders) for a material. It helps planners visualize shortages and immediately perform scheduling actions.

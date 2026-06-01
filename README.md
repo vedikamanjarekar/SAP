@@ -1,129 +1,104 @@
-# SAP ECC Enterprise Knowledge Hub
+# SAP ECC Learning Repository
 
-[![SAP ERP](https://img.shields.io/badge/SAP-ECC_6.0-blue?logo=sap&logoColor=white&style=flat-square)](https://www.sap.com)
-[![Documentation](https://img.shields.io/badge/Documentation-Complete-success?style=flat-square)](#repository-structure)
-[![Internship Ready](https://img.shields.io/badge/Portfolio-Internship_Showcase-blueviolet?style=flat-square)](#internship-relevance)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-
-Welcome to the **SAP ECC Enterprise Knowledge Hub**—an industry-grade repository compiling structural architectures, configuration guides, functional modules, and standard business workflows of SAP ERP Central Component (ECC).
-
-This repository is designed as a **professional portfolio and interview preparation asset**, demonstrating structural mastery of ERP systems, business process integrations, and database landscapes.
+Welcome to the **SAP ECC Learning Repository**! This project serves as a comprehensive, structured knowledge base and educational portfolio designed for students, interns, beginners, and recruiters. It covers the core functional and technical aspects of SAP ERP Central Component (ECC).
 
 ---
 
-## 🚀 Quick Start & Local Run
+## 🗺️ Learning Path & Quick Navigation Matrix
 
-To launch the interactive **SAP ECC Explorer and Training Portal** web application locally, execute the following commands in your terminal:
+Use this navigation matrix to explore the repository's modules, business processes, and preparation materials:
 
-1. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
-2. **Start Server:**
-   ```bash
-   npm start
-   ```
-3. **Open Portal:**
-   Navigate to [http://localhost:5000](http://localhost:5000) in your web browser.
-
----
-
-## 🏛️ System Architecture
-
-SAP ECC relies on the classic **3-Tier R/3 architecture** built on the NetWeaver integration suite. Below is a conceptual visualization of the system infrastructure:
-
-![SAP ECC Architecture](images/sap_ecc_architecture.png)
+| 📘 Introduction | 🏗️ Architecture | 📂 Modules | 🔄 Business Processes | 💼 Career & prep |
+| :--- | :--- | :--- | :--- | :--- |
+| [ERP & SAP Basics](file:///C:/Users/aditi/Documents/SAP.GIT/docs/introduction/introduction.md) | [3-Tier System Architecture](file:///C:/Users/aditi/Documents/SAP.GIT/docs/architecture/ecc_architecture.md) | [FI - Financial Accounting](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/FI.md) | [Procure to Pay (P2P)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/business-processes/procure-to-pay.md) | [Top 100 Interview Q&A](file:///C:/Users/aditi/Documents/SAP.GIT/docs/interview-preparation/top_100_questions.md) |
+| [Landscape & NetWeaver](file:///C:/Users/aditi/Documents/SAP.GIT/docs/introduction/sap_landscape_basics.md) | [System Landscape & TMS](file:///C:/Users/aditi/Documents/SAP.GIT/docs/architecture/system_landscape.md) | [CO - Controlling](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/CO.md) | [Order to Cash (O2C)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/business-processes/order-to-cash.md) | [SAP Learning Roadmap](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/learning_roadmap.md) |
+| [Master Data & DDIC](file:///C:/Users/aditi/Documents/SAP.GIT/docs/introduction/master_data_concepts.md) | [RFC, IDocs, ALE & EDI](file:///C:/Users/aditi/Documents/SAP.GIT/docs/architecture/integration.md) | [MM - Materials Management](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/MM.md) | [Plan to Produce (PtP)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/business-processes/plan-to-produce.md) | [SAP Certification Guide](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/certification_guide.md) |
+| | | [SD - Sales & Distribution](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/SD.md) | [Record to Report (R2R)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/business-processes/record-to-report.md) | [Career Paths & Roles](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/career_paths.md) |
+| | | [PP - Production Planning](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/PP.md) | [Hire to Retire (H2R)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/business-processes/hire-to-retire.md) | [SAP Project Lifecycle](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/project_lifecycle.md) |
+| | | [QM - Quality Management](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/QM.md) | | [T-Codes & Tables Index](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/tcodes_reference.md) |
+| | | [PM - Plant Maintenance](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/PM.md) | | [Org Structure Guide](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/org_structure_guide.md) |
+| | | [HCM - Human Capital](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/HCM.md) | | [Security & Spools Guide](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/roles_authorization.md) |
+| | | [WM - Warehouse Mgmt](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/WM.md) | | [Learning Notes & Analogies](file:///C:/Users/aditi/Documents/SAP.GIT/docs/resources/learning_notes.md) |
+| | | [BASIS - System Admin](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/BASIS.md) | | |
 
 ---
 
-## 📂 Repository Structure
+## 🌟 Introduction to SAP ECC
 
-The documentation is structured logically into modular files. Use the links below to navigate the knowledge base:
+### What is SAP ECC?
+**SAP ERP Central Component (ECC)** is one of the most widely deployed Enterprise Resource Planning (ERP) software packages in the world. It provides a core suite of applications that integrates all functional areas of a business, ensuring real-time consistency and a single source of truth for corporate data.
 
-```
-SAP.GIT/
-│
-├── 🏛️ [architecture/](architecture/)
-│   ├── [ecc_architecture.md](architecture/ecc_architecture.md) - R/3 3-Tier, GUI layer, and NetWeaver
-│   ├── [landscape.md](architecture/landscape.md)               - DEV/QAS/PRD environments, TMS, & TRs
-│   └── [integration.md](architecture/integration.md)           - RFCs, IDocs structure, ALE, and EDI
-│
-├── 📦 [modules/](modules/)
-│   ├── [mm.md](modules/mm.md)                                 - Materials Management (Procurement & Inventory)
-│   ├── [sd.md](modules/sd.md)                                 - Sales and Distribution (Sales, Deliveries, Billing)
-│   ├── [fico.md](modules/fico.md)                             - Financial Accounting (FI) & Controlling (CO)
-│   ├── [pp.md](modules/pp.md)                                 - Production Planning (MRP, Work Centers, Routing)
-│   ├── [wm.md](modules/wm.md)                                 - Warehouse Management (Bin level control)
-│   ├── [hcm.md](modules/hcm.md)                               - Human Capital Management (Employee lifecycle)
-│   └── [basis.md](modules/basis.md)                           - System Administration & Diagnostics
-│
-├── 🔄 [business-processes/](business-processes/)
-│   ├── [p2p.md](business-processes/p2p.md)                     - Procure-to-Pay (P2P) flow
-│   ├── [o2c.md](business-processes/o2c.md)                     - Order-to-Cash (O2C) flow
-│   ├── [r2r.md](business-processes/r2r.md)                     - Record-to-Report (R2R) flow
-│   ├── [h2r.md](business-processes/h2r.md)                     - Hire-to-Retire (H2R) flow
-│   └── [plan_to_produce.md](business-processes/plan_to_produce.md) - Plan-to-Produce manufacturing flow
-│
-├── ⚙️ [configuration-guides/](configuration-guides/)
-│   ├── [org_structure.md](configuration-guides/org_structure.md)   - Defining & Assigning Org Units
-│   └── [roles_authorization.md](configuration-guides/roles_authorization.md) - PFCG Roles, Background Jobs, and Spools
-│
-├── 🗃️ [master-data/](master-data/)
-│   └── [master_data_concepts.md](master-data/master_data_concepts.md) - Material/Vendor Master & DDIC (SE11)
-│
-├── 📊 [transactions/](transactions/)
-│   └── [tcodes_reference.md](transactions/tcodes_reference.md)   - Cross-module Table & T-Code directory
-│
-├── 📝 [notes/](notes/)
-│   └── [learning_notes.md](notes/learning_notes.md)             - Analogies, terms, and ASAP Lifecycle
-│
-└── 💼 [interview-questions/](interview-questions/)
-    └── [interview_prep.md](interview-questions/interview_prep.md)       - Beginner, Intermediate, & Scenario-based Q&As
+### Why SAP ECC is Important in Enterprises
+Large enterprises utilize SAP ECC to coordinate complex, global operations. By running a centralized database, a business can:
+* **Eliminate Information Silos:** Connecting warehouse logistics, sales bookings, and bank ledgers seamlessly.
+* **Ensure Regulatory Compliance:** Implementing strict audit logs, transaction tracking, and Separation of Duties (SoD).
+* **Drive Efficiency:** Automating resource planning, reducing manual reconciliation times, and predicting supply chain bottlenecks.
+
+### How SAP Supports Business Processes
+SAP functions by standardizing common enterprise workflows (such as buying raw materials, paying vendors, selling products, and closing books) into structured, integrated transaction routes that flow automatically through general financial ledgers.
+
+---
+
+## 🏗️ SAP Architecture Overview
+
+SAP ECC is built on the classic **R/3 3-Tier Client-Server Architecture** which isolates services to ensure high performance, security, and scalability:
+
+```mermaid
+graph TD
+    subgraph Presentation Layer
+        GUI[SAP GUI Desktop / Web Access]
+    end
+    subgraph Application Layer
+        AS[NetWeaver Application Server ABAP <br> Dispatcher & Work Processes]
+    end
+    subgraph Database Layer
+        DB[(Central Database <br> Oracle / DB2 / SQL Server)]
+    end
+    GUI <--> AS
+    AS <--> DB
 ```
 
----
-
-## 🚀 Key Learning Objectives & Coverage
-
-This knowledge base covers the essential pillars of SAP functional and technical administration:
-
-1. **Cross-Module Integration:** Explaining how business actions trigger automatic postings across MM, SD, and FICO (e.g., the role of the GR/IR clearing account).
-2. **Configuration Mastery:** Detailed pathways in the custom SAP implementation menu (`SPRO`) for structuring companies, plants, sales organizations, and G/L accounts.
-3. **Systems Administration (Basis):** Managing security permissions (`PFCG`), analyzing runtime program crashes (`ST22`), checking active lock blocks (`SM12`), and automating background executions (`SM36`/`SM37`).
-4. **Data Management:** Defining database structures in the SAP Data Dictionary (`SE11`) and understanding Master Data lifecycle tracking.
+* **Presentation Layer:** The user interface (SAP GUI) which captures user requests and renders screen fields.
+* **Application Layer:** The business logic engine (NetWeaver AS ABAP) which hosts the Dispatcher, allocating user dialogs to available work processes (Dialog, Update, Batch, Spool, Enqueue).
+* **Database Layer:** The central database hosting all master configuration definitions, transaction logs, and operational tables.
 
 ---
 
-## 💼 Internship Relevance & Portfolio Value
+## 📂 Core SAP ECC Modules Covered
 
-If you are presenting this repository for placements, internships, or professional networking:
-* **Business Process Competence:** Demonstrates you do not just understand single transactions, but can trace a process flow (like P2P or O2C) from department requisition to G/L account reconciliation.
-* **Technical Breadth:** Shows familiarity with SAP architecture (RFCs, IDoc status processing, transports, work processes) that normally requires years of hands-on experience.
-* **Problem Solving:** Contains a dedicated [Interview & Business Scenarios Guide](interview-questions/interview_prep.md) modeling real production issues (such as credit blocks, dump reviews, and locked tables) and their resolutions.
+This repository covers the following core modules:
+
+* **[SAP FI (Financial Accounting)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/FI.md):** External financial accounting, G/L ledgers, accounts payable/receivable, and asset depreciation.
+* **[SAP CO (Controlling)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/CO.md):** Internal cost center management, internal orders, activity types, cost elements, and profitability analyses.
+* **[SAP MM (Materials Management)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/MM.md):** Inventory control, vendor management, purchase orders, goods receipts, and OBYC automatic account allocations.
+* **[SAP SD (Sales and Distribution)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/SD.md):** Customer master records, pricing conditions, shipping points, deliveries, and sales billing.
+* **[SAP PP (Production Planning)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/PP.md):** BOMs, routings, work centers, material requirements planning (MRP), and shop floor production orders.
+* **[SAP QM (Quality Management)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/QM.md):** Inspection lots, quality plans, results recording, usage decisions, and quality certificates.
+* **[SAP PM (Plant Maintenance)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/PM.md):** Technical objects (functional locations, equipment), maintenance orders, counters, and technical completions.
+* **[SAP HR/HCM (Human Capital Management)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/HCM.md):** Personnel administration infotypes, organizational units, time tracking, and payroll calculations.
+* **[SAP WM (Warehouse Management)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/WM.md):** Advanced bin-level stock tracking, quants, storage types, and transfer orders.
+* **[SAP Basis (System Administration)](file:///C:/Users/aditi/Documents/SAP.GIT/docs/modules/BASIS.md):** User master records, security profiles, background job scheduling, transport routes, and short dump diagnostics.
 
 ---
 
-## 🗺️ Future Roadmap
+## 🔄 Module Integration & Business Cycles
 
-- [ ] Add SAP S/4HANA migration pathways and comparisons (Fiori vs GUI, database changes).
-- [ ] Incorporate custom ABAP coding examples (User Exits, BAPIs, and reports).
-- [ ] Add interactive mock test links for SAP MM/FICO certification preparation.
+Modules in SAP do not work in isolation. They are highly integrated, meaning a transaction in one module immediately triggers activities in another:
+
+### Procure-to-Pay (P2P) Integration
+The purchase requisition in **MM** triggers sourcing. Creating a Purchase Order creates commitments. Posting a Goods Receipt updates **MM** stock levels and triggers financial accounting postings in **FI**. The vendor invoice triggers invoice verification in **MM** and creates accounts payable liabilities in **FI**.
+
+### Order-to-Cash (O2C) Integration
+The Sales Order in **SD** reserves inventory in **MM**. The Outbound Delivery triggers picking. Posting Goods Issue updates **MM** physical stock and posts Cost of Goods Sold in **FI**. Billing generates the customer invoice in **SD** and writes sales revenues to **FI** General Ledgers.
 
 ---
 
-## 🤝 Contribution Guidelines
+## 🤝 Contributor Guidelines
 
-Contributions are welcome! If you find typographical errors, outdated T-code mappings, or wish to add a new business scenario:
+This repository is an open educational resource. Contributions to improve or expand the documentation are welcome!
+
 1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature-improvement`.
-3. Commit your changes with detailed summaries: `git commit -m "Add SD credit management steps"`.
-4. Open a Pull Request.
-
----
-
-## ✍️ Author
-
-* **Vedika Manjarekar**
-* GitHub: [@vedikamanjarekar](https://github.com/vedikamanjarekar)
-* LinkedIn: [vedikamanjarekar](https://www.linkedin.com)
-* Purpose: Placement Portfolio & Technical Documentation Hub
+2. Create your feature branch (`git checkout -b feature/NewSAPGuide`).
+3. Maintain consistent Markdown styling (use tables, Mermaid diagrams, and GitHub alerts where appropriate).
+4. Do not upload any configuration codes or development scripts.
+5. Open a Pull Request for review.
